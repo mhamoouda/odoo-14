@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+legal_law,legal.law,model_legal_law,base.group_user,1,1,1,1
+client_meeting,client.meeting,model_client_meeting,base.group_user,1,1,1,1
+client_appointment,client.appointment,model_client_appointment,base.group_user,1,1,1,1
+
+

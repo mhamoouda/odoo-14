@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mat_course,mat.course,model_mat_course,base.group_user,1,1,1,1
+access_mat_sessions,mat.sessions,model_mat_sessions,base.group_user,1,1,1,1
+access_mat_registration,mat.registration,model_mat_registration,base.group_user,1,1,1,1

@@ -1,0 +1,27 @@
+<odoo>
+<!--    <record model="ir.ui.view" id="attandance1_registration_pivot">-->
+<!--        <field name="name">attandance</field>-->
+<!--        <field name="model">hr.attendance</field>-->
+<!--        <field name="type">graph</field>-->
+<!--        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_graph"/>-->
+<!--        <field name="arch" type="xml">-->
+
+
+<!--            <xpath expr="//field[@name='employee_id']" position="after">-->
+<!--                <field name="emp"/>-->
+<!--            </xpath>-->
+
+
+<!--        </field>-->
+<!--    </record>-->
+
+    <record model="ir.actions.act_window" id="law_attandance_list_action">
+            <field name="name">lawyer attandance </field>
+            <field name="res_model">hr.attendance</field>
+            <field name="view_mode">graph,pivot</field>
+        </record>
+        <menuitem name="Lawyers Attandance" id="law_attanndace_top_menu" parent="administrative_top_menu"  sequence="1"
+                  action="law_attandance_list_action"/>
+
+
+</odoo>

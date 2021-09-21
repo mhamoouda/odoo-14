@@ -1,0 +1,50 @@
+<odoo>
+    <record model="ir.ui.view" id="lawyers_registration_form">
+        <field name="name">affiliate</field>
+        <field name="model">hr.employee</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+
+
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="is_affliate"/>
+            </xpath>
+            <xpath expr="//field[@name='is_affliate']" position="after">
+                <field name="marketer_id"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+
+<!--    define search view -->
+    <record model="ir.ui.view" id="affiliate_search_view">
+            <field name="name"> affiliate search</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="is_affliate"/>
+                    <field name="marketer_id"/>
+                    <filter name="marketer_id" string="Affiliate Marketers"
+                            domain="[('marketer_id', '=', uid)]"/>
+
+                    <group string="Group By">
+                        <filter name="marketer_id" string="Marketers"
+                                context="{'group_by': 'marketer_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    <record model="ir.actions.act_window" id="marketers_list_action">
+            <field name="name">Affiliate Marketers</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Affiliate Marketers" id="affiliate_marketers_menu" parent="marketers_menu"
+                  action="marketers_list_action"/>
+
+
+</odoo>

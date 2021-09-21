@@ -1,0 +1,32 @@
+<odoo>
+<!--    <record model="ir.ui.view" id="affiliate_markeers_payslip">-->
+<!--        <field name="name">affiliate</field>-->
+<!--        <field name="model">hr.employee</field>-->
+<!--        <field name="type">kanban</field>-->
+<!--        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='department_id']" position="after">-->
+<!--                <field name="is_affliate"/>-->
+<!--            </xpath>-->
+
+<!--        </field>-->
+<!--    </record>-->
+
+
+
+
+    <record model="ir.actions.act_window" id="marketers_payslips_list_action">
+        <field name="name">Marketers payslips </field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">kanban</field>
+        <field name="domain">[('is_affliate', '=', 'True')]</field>
+        <field name="view_id" ref ="hr.hr_kanban_view_employees"/>
+
+    </record>
+
+
+    <menuitem id="marketers_payslips" name="Marketers pay slips" parent="marketers_menu"
+              action="marketers_payslips_list_action"/>
+
+
+</odoo>

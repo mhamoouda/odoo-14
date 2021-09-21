@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+    <menuitem id="main_Cosmetics_menu" name="Cosmetics" web_icon="cosmatics,static/images/cosm.jpg"/>
+    <!-- A first level in the left side menu is needed
+         before using action= attribute -->
+    <menuitem id="marketers_menu" name="Marketers" sequence="2"
+              parent="main_Cosmetics_menu"/>
+
+
+
+
+    <record model="ir.actions.act_window" id="cosmatics_inventory">
+      <field name="name">cosmetics inventory</field>
+      <field name="res_model">stock.picking.type</field>
+      <field name="view_mode">kanban</field>
+      <field name="view_id" ref ="stock.stock_picking_type_kanban"/>
+
+    </record>
+
+    <menuitem id="inventory_menu" name="Inventory" sequence="3"
+              parent="main_Cosmetics_menu" action="cosmatics_inventory"/>
+
+<!--     purshas order -->
+    <record model="ir.actions.act_window" id="cosmatics_purachas">
+      <field name="name">cosmetics purchase</field>
+      <field name="res_model">purchase.order</field>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref ="purchase.purchase_order_kpis_tree"/>
+
+    </record>
+
+    <menuitem id="purchase_menu" name="Purchase" sequence="4"
+              parent="main_Cosmetics_menu" action="cosmatics_purachas"/>
+
+
+    <record model="ir.actions.act_window" id="cosmatics_sale_reporting">
+      <field name="name">cosmetics sale reporting</field>
+      <field name="res_model">sale.report</field>
+      <field name="view_mode">graph</field>
+      <field name="view_id" ref ="sale.view_order_product_graph"/>
+
+    </record>
+
+    <menuitem id="reporting_menu" name="Reporting" sequence="5"
+              parent="main_Cosmetics_menu"/>
+
+    <menuitem id="cosmatic_sale_reporting" name="Cosmatics Sale Report"
+              parent="reporting_menu" action="cosmatics_sale_reporting"/>
+
+
+    <record model="ir.actions.act_window" id="cosmatics_purchase_reporting">
+      <field name="name">cosmetics purchase reporting</field>
+      <field name="res_model">purchase.report</field>
+      <field name="view_mode">graph</field>
+      <field name="view_id" ref ="purchase.view_purchase_order_graph"/>
+    </record>
+
+
+    <menuitem id="cosmatic_purchase_reporting" name="Cosmatics purchase Report"
+              parent="reporting_menu" action="cosmatics_purchase_reporting"/>
+
+
+
+
+  </data>
+</odoo>

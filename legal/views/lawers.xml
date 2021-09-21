@@ -1,0 +1,29 @@
+<odoo>
+    <record model="ir.ui.view" id="lawyers_registration_form">
+        <field name="name">Lawyers</field>
+        <field name="model">hr.employee</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+
+
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="is_lawyer"/>
+            </xpath>
+            <xpath expr="//field[@name='is_lawyer']" position="after">
+                <field name="given_matters"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="lawyers_list_action">
+            <field name="name">Lawyers</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">tree,form,kanban,graph</field>
+        </record>
+        <menuitem name="Lawyers" id="legal_top_menu" parent="legal_root_menu"  sequence="3"
+                  action="lawyers_list_action"/>
+
+
+</odoo>

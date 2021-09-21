@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="affliate_marketers_order_form">
+        <field name="name">affiliate marketers</field>
+        <field name="model">sale.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="aff_name"/>
+            </xpath>
+<!--            <xpath expr="//field[@name='sale_order_template_id']" position="after">-->
+<!--                <field name="client_address"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='client_address']" position="after">-->
+<!--                <field name="client_phone1"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='client_phone1']" position="after">-->
+<!--                <field name="client_phone2"/>-->
+<!--            </xpath>-->
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="marketers_sale_order_action">
+        <field name="name">affiliate orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">form</field>
+    </record>
+    <menuitem name="Affiliate orders" id="marketers_sale_order" parent="marketers_menu"  sequence="3"
+              action="marketers_sale_order_action"/>
+
+
+</odoo>

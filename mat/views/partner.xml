@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+<!--        <record model="ir.ui.view" id="mat_instructor_partner_form_view">-->
+<!--            <field name="name">partner instructor</field>-->
+<!--            <field name="model">res.partner</field>-->
+<!--            <field name ="inherit_id" ref="base.view_partner_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--&lt;!&ndash;                <notebook position="inside">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <page string="sessions">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <group>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <field name="instructor"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <field name="session_ids"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </group>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    </page>&ndash;&gt;-->
+<!--&lt;!&ndash;                </notebook>&ndash;&gt;-->
+<!--&lt;!&ndash;                <xpath expr="//field[@name='category_id']" position="after">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <field name="youtube" string="youtube"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                </xpath>&ndash;&gt;-->
+<!--&lt;!&ndash;                <xpath expr="//field[@name='youtube']" position="after">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <field name="state" string="state"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                </xpath>&ndash;&gt;-->
+<!--            </field>-->
+<!--        </record>-->
+
+
+        <record model="ir.actions.act_window" id="contact_list_action">
+            <field name="name">Contacts</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem name="Contacts" id="mat_contact_list" parent="mat.menu_root"
+                  action="contact_list_action"/>
+
+
+    </data>
+</odoo>

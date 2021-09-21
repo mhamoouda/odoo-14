@@ -1,0 +1,199 @@
+<odoo>
+    <data>
+        <!--    opening list in module -->
+        <record model="ir.ui.view" id="patient_list">
+            <field name="name">patient</field>
+            <field name="model">healthcare.patiant</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <!--  explicit form view for patiant form -->
+        <record model="ir.ui.view" id="patient_recoreded_info">
+            <field name="name">patient info</field>
+            <field name="model">healthcare.patiant</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="%(healthcare.action_patient_appoint_wizard)d"
+                                string="Create Appointment" type="action" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <field name="photo" nolabel="1" class="oe_left oe_avatar" img_width="120" img_height="120" width="120" height="120" widget="image"/>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="patient_id"/>
+                            </div>
+                            <h1>
+                                <field style="width: 60%" name="patient_id" default_focus="1" placeholder="Patient Name" context="{'default_is_patient': 1,'default_is_person': 1}"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="date_of_birth"/>
+                                <field name="marital"/>
+                            </group>
+                            <group>
+                                <field name="sex"/>
+                                <field name="patiant_age"/>
+                                <field name="address"/>
+                            </group>
+
+                        </group>
+                        <notebook>
+                            <page string="General Information">
+                                <group>
+                                    <group>
+                                        <field name="blood_type"/>
+                                        <field name="ethnitic_group"/>
+                                        <field name="insurance"/>
+                                    </group>
+                                    <group>
+                                        <field name="rh"/>
+                                        <field name="familly"/>
+                                        <field name="Recievable"/>
+                                        <field name="primary_care_doc"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="desease">
+                            </page>
+                            <page string="Evalutions">
+                            </page>
+                            <page string="Surgeres">
+                            </page>
+                            <page string="Gentic Risks">
+                            </page>
+                            <page string="socioeconimacs">
+                            </page>
+                            <page string="livestyle">
+                            </page>
+                            <page string="lab test">
+                            </page>
+                            <page string="Medication">
+                            </page>
+                            <page string="Vacnccess">
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- list view for patient -->
+
+        <record model="ir.ui.view" id="patiant_info_tree">
+            <field name="name">patiant info tree </field>
+            <field name="model">healthcare.patiant</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date_of_birth"/>
+                    <field name="marital"/>
+                    <field name="sex"/>
+                    <field name="patiant_age"/>
+                    <field name="address"/>
+                    <field name="blood_type"/>
+
+                </tree>
+            </field>
+        </record>
+
+ <!-- in topppppppppppppppppppppppppppppppppppppppppppp menu      -->
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="healthcare.action_window">
+            <field name="name">Healthcare</field>
+            <field name="res_model">healthcare.patiant</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+ <!-- Top menu item -->
+
+        <menuitem name="Healthcare" id="healthcare_menu_root"/>
+
+        <record model="ir.actions.act_window" id="patiant_list_action">
+            <field name="name">patients</field>
+            <field name="res_model">healthcare.patiant</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="patient" id="healthcare_menu" parent="healthcare_menu_root"  sequence="1"
+                  action="patiant_list_action"/>
+
+
+
+        <!--        apppointmet meenue actions-->
+        <record model="ir.actions.act_window" id="appointment_list_action">
+            <field name="name">Appointment</field>
+            <field name="res_model">healthcare.patiant</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Appointment" id="mat_appoint" parent="healthcare_menu_root"  sequence="2"
+                  action="appointment_list_action"/>
+
+
+        <!--        in admissions actions and menu items-->
+        <record model="ir.actions.act_window" id="inadmission_list_action">
+            <field name="name">inpatiant adminstrations</field>
+            <field name="res_model">healthcare.patiant</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem name="inpatiant adminstrations" id="mat_inpatiant" parent="healthcare_menu_root"  sequence="3"
+                  action="inadmission_list_action"/>
+
+
+        <!--        imaging -->
+        <record model="ir.actions.act_window" id="imaging_list_action">
+            <field name="name">imaging</field>
+            <field name="res_model">healthcare.patiant</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem name="Imaging" id="mat_imaging" parent="healthcare_menu_root"  sequence="4"
+                  action="imaging_list_action"/>
+
+        <!--        pediatric actions and menu item -->
+        <record model="ir.actions.act_window" id="pediatric_list_action">
+            <field name="name">pediatric</field>
+            <field name="res_model">healthcare.patiant</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem name="pediatric" id="mat_pediatric" parent="healthcare_menu_root"  sequence="5"
+                  action="pediatric_list_action"/>
+
+        <!--        -->
+        <record model="ir.actions.act_window" id="laboratory_list_action">
+            <field name="name">laboratory</field>
+            <field name="res_model">healthcare.patiant</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem name="laboratory" id="mat_laboratory" parent="healthcare_menu_root"  sequence="6"
+                  action="laboratory_list_action"/>
+
+        <!--        nursing -->
+        <record model="ir.actions.act_window" id="Nursing_list_action">
+            <field name="name">Nursing</field>
+            <field name="res_model">healthcare.patiant</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem name="Nursing" id="mat_Nursing" parent="healthcare_menu_root"  sequence="7"
+                  action="Nursing_list_action"/>
+
+
+
+
+
+
+
+    </data>
+</odoo>

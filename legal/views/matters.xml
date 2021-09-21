@@ -1,0 +1,27 @@
+<odoo>
+    <record model="ir.ui.view" id="Matters_registration_form">
+        <field name="name">Matters</field>
+        <field name="model">crm.lead</field>
+        <field name="type">pivot</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_pivot"/>
+        <field name="arch" type="xml">
+
+
+            <xpath expr="//field[@name='create_date']" position="after">
+                <field name="coloumns"/>
+            </xpath>
+
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="matters_list_action">
+            <field name="name">Matters</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">kanban,tree,form,graph</field>
+        </record>
+        <menuitem name="Matters" id="maters_top_menu" parent="legal_root_menu"  sequence="5"
+                  action="matters_list_action"/>
+
+
+</odoo>

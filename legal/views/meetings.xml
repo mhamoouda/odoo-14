@@ -1,0 +1,121 @@
+<odoo>
+    <data>
+
+        <record id="client-meeting_view_form" model="ir.ui.view">
+            <field name="name">meeting form</field>
+            <field name="model">client.meeting</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="%(action_client_appoint_wizard)d" string="Create Appointment" type="action" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="opining_client_meetings"
+                                    class="oe_stat_button"
+                                    icon="fa-calender"
+                                    type="object"
+                                    string="Mattes">
+                            </button>
+                        </div>
+                        <group>
+                            <field name="client_id"/>
+                            <field name="calend"/>
+                            <field name="meeting_info"/>
+
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+<!--        calendar view -->
+        <record id="mobile_service_view_calendar" model="ir.ui.view">
+            <field name="name">client_meeeting_calendar</field>
+            <field name="model">client.meeting</field>
+            <field name="arch" type="xml">
+                <calendar string="client meeting" date_start="datee" color="client_id">
+                    <field name="client_id"/>
+                    <field name="calend"/>
+                </calendar>
+            </field>
+        </record>
+
+
+<!--        list view -->
+        <record model="ir.ui.view" id="client_meeting_tree">
+            <field name="name">client meeting Tree </field>
+            <field name="model">client.meeting</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="client_id"/>
+                    <field name="calend"/>
+                </tree>
+            </field>
+        </record>
+
+<!--pivot viewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
+        <record id="client_meeting_view_pivot" model="ir.ui.view">
+        <field name="name">client_meeting_pivot</field>
+        <field name="model">client.meeting</field>
+        <field name="arch" type="xml">
+            <pivot string="client meeting" sample="1">
+                <field name="client_id"/>
+                <field name="calend"/>
+            </pivot>
+        </field>
+    </record>
+<!--graph view -->
+    <record id="client_meeting_view_graph" model="ir.ui.view">
+        <field name="name">client_meeting_graph</field>
+        <field name="model">client.meeting</field>
+        <field name="arch" type="xml">
+            <graph string="client meeting" sample="1">
+                <field name="client_id"/>
+                <field name="calend"/>
+            </graph>
+        </field>
+    </record>
+<!--        kanban view -->
+
+    <record id="client_meeting_kanban" model="ir.ui.view">
+            <field name="name">client_meeting_kanban</field>
+            <field name="model">client.meeting</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="client_id"/>
+                    <field name="calend"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_card_content">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <strong><field name="client_id"/></strong>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <field name="calend"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="client_meeting_list_action">
+            <field name="name">Client Meeting</field>
+            <field name="res_model">client.meeting</field>
+            <field name="view_mode">tree,form,kanban,calendar,pivot,graph</field>
+        </record>
+        <menuitem name="Client meeting" id="client_meeting_top_menu" parent="legal_root_menu"  sequence="1"
+                  action="client_meeting_list_action"/>
+
+
+    </data>
+</odoo>

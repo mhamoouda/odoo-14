@@ -1,0 +1,29 @@
+<odoo>
+
+   <report
+      id="clients_cared_report"
+      string="clients cards"
+      model="legal.law"
+      report_type="qweb-pdf"
+      name="legal.report_clients_card"
+      file="legal.report_clients_card"/>
+
+
+   <report
+    id="clients_card_xlsx"
+    model="legal.law"
+    string="clients cards XLSX"
+    report_type="xlsx"
+    name="clients_card_xlsx"
+
+
+/>
+
+
+
+
+
+
+
+
+</odoo>

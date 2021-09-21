@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="act_affiliate_activity">
+        <field name="name">Affiliate orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">activity</field>
+        <field name="view_id"
+               ref="sale.sale_order_view_activity"/>
+    </record>
+    <record model="ir.actions.act_window" id="act_affiliate_orders">
+        <field name="name">Sessions</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="sale.view_sale_order_kanban"/>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_inventory_stock">
+        <field name="name">On Hand Stock</field>
+        <field name="res_model">stock.quant</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="stock.stock_quant_view_graph"/>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_customer_invoices">
+        <field name="name">Customer Invoices</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="account.view_account_move_kanban"/>
+    </record>
+
+    <record model="ir.ui.view" id="board_session_form">
+        <field name="name">Session Dashboard Form</field>
+        <field name="model">board.board</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Session Dashboard">
+                <board style="1-2">
+                    <column>
+                        <action
+                                string="Marketers activity"
+                                name="%(act_affiliate_activity)d"
+                                height="150"
+                                width="510"/>
+                        <action
+                                string="Affiliate Orders"
+                                name="%(act_affiliate_orders)d"/>
+                    </column>
+                    <column>
+                        <action
+                                string="On Hand Stock"
+                                name="%(act_inventory_stock)d"/>
+
+                        <action
+                                string="Customer invoices"
+                                name="%(act_customer_invoices)d"/>
+                    </column>
+                </board>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="open_board_cosametics">
+        <field name="name">Cosmetics Dashboard</field>
+        <field name="res_model">board.board</field>
+        <field name="view_mode">form</field>
+        <field name="usage">menu</field>
+        <field name="view_id" ref="board_session_form"/>
+    </record>
+
+    <menuitem
+            name="Cosmetics Dashboard" parent="main_Cosmetics_menu"
+            action="open_board_cosametics"
+            sequence="1"
+            id="menu_board_cosmatics"/>
+
+</odoo>

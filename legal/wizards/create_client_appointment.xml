@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="create_client_appoint_wizard_view" model="ir.ui.view">
+            <field name="name">client_appointment_wizard</field>
+            <field name="model">client.appointment</field>
+            <field name="arch" type="xml">
+                <form string="Create Appointment">
+                    <group>
+                        <field name ="client_id"/>
+                        <field name ="appointment_date"/>
+                        <field name ="gender"/>
+                    </group>
+                    <footer>
+                        <button string="Confirm" name="action_create_appointment" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_client_appoint_wizard" model="ir.actions.act_window">
+            <field name="name">Create Appointment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">client.appointment</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_id" ref ="create_client_appoint_wizard_view" />
+            <field name="target">new</field>
+        </record>
+
+</odoo>

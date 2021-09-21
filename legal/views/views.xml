@@ -1,0 +1,190 @@
+<odoo>
+    <data>
+        <!--     identification opeeeeeeeeeeeeining menu as list -->
+        <record model="ir.ui.view" id="main_law_list">
+            <field name="name">Client Registration</field>
+            <field name="model">legal.law</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="client_id"/>
+                    <field name="lawyer_ids"/>
+                    <field name="date"/>
+                    <field name="contact_no"/>
+                    <field name="state"/>
+                    <field name="services"/>
+                    <field name="email"/>
+                    <field name="matteer_type"/>
+
+                </tree>
+            </field>
+        </record>
+
+<!--      kanaban view kkkkkkkkkkkkkkkkkkkkkkkkkkkkanban -->
+        <record id="leagl_law_kanaba_view" model="ir.ui.view" >
+        <field name="name">client register View</field>
+        <field name="model">legal.law</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_badge">
+                <field name="client_id"/>
+                <field name="date"/>
+                <field name="contact_no"/>
+                <field name="state"/>
+                <field name="services"/>
+                <field name="email"/>
+                <field name="matteer_type"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title"><field name="client_id"/></strong>
+                                <ul>
+                                    <li>
+                                       Date: <field name="date"/>
+                                    </li>
+                                    <li>
+                                       state <field name="state"/>
+                                    </li>
+                                    <li>
+                                       matteer_type: <field name="matteer_type"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+ <!-- list view for client  -->
+
+        <record model="ir.ui.view" id="client_info_tree">
+            <field name="name">client INfo Tree </field>
+            <field name="model">legal.law</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="client_id"/>
+                    <field name="lawyer_ids"/>
+                    <field name="date"/>
+                    <field name="email"/>
+                    <field name="matteer_type"/>
+                    <field name="contact_no"/>
+                    <field name="services"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+        <!--        idetification form view for openinhh-->
+        <record model="ir.ui.view" id="law_main_form">
+            <field name="name">client requests</field>
+            <field name="model">legal.law</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_to_in_progress" type="object" string="In Progress" class="oe_highlight" states="draft"/>
+                        <button name="action_to_finished" type="object" string="Finished" class="oe_highlight" states="in_progress"/>
+                        <button name="action_to_cancelled" type="object" string="cancelled" class="oe_highlight" states="in_progress,draft"/>
+                        <button name="action_return_to_draft" type="object" string="Return To Draft" class="oe_highlight" states="in_progress,finished"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,finished,cancelled" readonly="1"/>
+
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="opining_matters"
+                                    type="object"
+                                    string="Matters"
+                                    class="oe_stat_button"
+                                    icon="fa-truck">
+                            </button>
+                        </div>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="open_client_meeting"
+                                    type="object"
+                                    string="client meetings"
+                                    class="oe_stat_button"
+                                    icon="fa-calendar">
+                            </button>
+                        </div>
+                        <field name="photo" nolabel="1" class="oe_right oe_avatar" img_width="120" img_height="120" width="120" height="120" widget="image"/>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="client_id"/>
+                            </div>
+                            <h1>
+                                <field style="width: 60%" name="client_id" default_focus="1" placeholder="client Name" context="{'default_is_client': 1,'default_is_person': 1}"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="lawyer_ids"/>
+                                <field name="date"/>
+                                <field name="contact_no"/>
+
+                            </group>
+                            <group>
+                                <field name="services"/>
+                                <field name="email"/>
+                            </group>
+
+                        </group>
+                        <notebook>
+                            <page string="Matter Details">
+                                <group>
+                                    <field name="matteer_type"/>
+                                    <field name="brief_descr"/>
+                                </group>
+                            </page>
+                            <page string="Matter decumentation">
+                                <group>
+                                     <field name="file_name"/>
+                                     <field name="file"/>
+                                </group>
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!--      actions for opening the frist  patiant top menu -->
+
+        <record model="ir.actions.act_window" id="client_list_action">
+            <field name="name">client Registration</field>
+            <field name="res_model">legal.law</field>
+            <field name="view_mode">tree,form,kanban,graph</field>
+        </record>
+        <!--                   appear  in  application -->
+        <menuitem name="Law Management" id="legal_root_menu" web_icon="legal,static/images/law.png" action="client_list_action"/>
+<!--        <menuitem name="Law Management" id="legal_root_menu" action="client_list_action"/>-->
+
+
+!--        law management list action -->
+        <record model="ir.actions.act_window" id="administrative_list_action">
+            <field name="name">Administrative</field>
+            <field name="res_model">legal.law</field>
+            <field name="view_mode">tree,form,kanban,graph</field>
+        </record>
+
+        <menuitem name="Administrative" id="administrative_top_menu" parent="legal_root_menu"  sequence="1" action="administrative_list_action"/>
+                  <menuitem name="Matters" id="matters_law_management" parent="administrative_top_menu"/>
+
+
+
+<!--        lawer list action -->
+        <record model="ir.actions.act_window" id="lawyers_list_action">
+            <field name="name">lawyers</field>
+            <field name="res_model">legal.law</field>
+            <field name="view_mode">tree,form,kanban,graph</field>
+        </record>
+        <menuitem name="Lawyers" id="legal_top_menu" parent="legal_root_menu"  sequence="3"
+                  action="client_list_action"/>
+
+
+
+    </data>
+</odoo>

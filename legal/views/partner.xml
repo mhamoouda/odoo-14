@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+<!--        <record model="ir.ui.view" id="lawer_partner_form_view">-->
+<!--            <field name="name">partner lawer </field>-->
+<!--            <field name="model">res.partner</field>-->
+<!--            <field name="inherit_id" ref="hr.res_users_view_form_profile"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--&lt;!&ndash;                <notebook position="inside">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <page string="Matters">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <group>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <field name="lawer"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <field name="matter_ids"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </group>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </page>&ndash;&gt;-->
+<!--&lt;!&ndash;                </notebook>&ndash;&gt;-->
+
+<!--                <xpath expr="//field[@name='category_id']" position="after">-->
+<!--                    <field name="lawer" string="lawer"/>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+<!--        <record model="ir.actions.act_window" id="lawer_contact_list_action">-->
+<!--            <field name="name">Lawers Contacts</field>-->
+<!--            <field name="res_model">res.partner</field>-->
+<!--            <field name="view_mode">kanban,tree,form</field>-->
+<!--        </record>-->
+<!--        <menuitem name="Contacts" id="lawers_contact" parent="legal_top_menu" action="lawer_contact_list_action"/>-->
+
+    </data>
+</odoo>

@@ -1,0 +1,232 @@
+<odoo>
+    <data>
+
+        <!--    opening new academy list -->
+        <record model="ir.ui.view" id="mat.list_view">
+            <field name="name">courses</field>
+            <field name="model">mat.course</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="resposnsable_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- explicite form view to enter your course  -->
+        <record model="ir.ui.view" id="mat.form_view">
+            <field name="name">open academy courses</field>
+            <field name="model">mat.course</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="resposnsable_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                            <page string="sessions">
+                                <field name="session_id">
+                                    <tree string="registerd Seesions">
+                                        <field name="name"/>
+                                        <field name="durations"/>
+                                        <field name="number_of_days"/>
+                                        <field name="seats"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+         <menuitem name="courses center" id="mat.menu_root"/>
+
+
+        <!--    action for sessions form -->
+        <record model="ir.actions.act_window" id="courses_list_action">
+            <field name="name">COURSES</field>
+            <field name="res_model">mat.course</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name=" COURSES" id="mat_courses" parent="mat.menu_root"  sequence="1"
+                  action="courses_list_action"/>
+
+
+        <!--    sessions form  start -->
+        <record model="ir.ui.view" id="mat.sessions_view">
+            <field name="name">mat.sessions</field>
+            <field name="model">mat.sessions</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="instructor_id"/>
+                                <field name="course_id"/>
+                            </group>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="durations"/>
+                                <field name="number_of_days"/>
+                                <field name="seats"/>
+                            </group>
+
+
+                        </group>
+                        <notebook>
+                            <page string="details">
+                                <group>
+                                    <field name="instructor"/>
+                                    <field name="email"/>
+                                    <field name="phone"/>
+                                </group>
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--    seeions form  end -->
+
+        <!--     sessions treeeeeeeeeeeeeeeeeeeeeeeeeeee -->
+        <record model="ir.ui.view" id="mat.session_tree">
+            <field name="name">sessions</field>
+            <field name="model">mat.sessions</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="instructor_id"/>
+                    <field name="course_id"/>
+                    <field name="start_date"/>
+                    <field name="durations"/>
+                    <field name="number_of_days"/>
+                    <field name="seats"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <!--     student registration  treeeeeeeeeeeeeeeeeeeeeeeeeeee -->
+        <record model="ir.ui.view" id="mat.student_registration_tree">
+            <field name="name">student Registration</field>
+            <field name="model">mat.registration</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="course_name"/>
+                    <field name="ident"/>
+                    <field name="faculty"/>
+                    <field name="major"/>
+                    <field name="start_date_reg"/>
+
+                </tree>
+            </field>
+        </record>v
+
+        <!--    student registration form  view  start -->
+
+        <record model="ir.ui.view" id="mat.registration_view">
+            <field name="name">Student Registrations</field>
+            <field name="model">mat.registration</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="course_name"/>
+                                <field name="ident"/>
+                            </group>
+                            <group>
+                                <field name="faculty"/>
+                                <field name="major"/>
+                                <field name="start_date_reg"/>
+                            </group>
+
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--    student registrations form  end -->
+
+        <!--    student registration action -->
+
+        <record model="ir.actions.act_window" id="registration_list_action">
+            <field name="name">Student registration</field>
+            <field name="res_model">mat.registration</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name=" Stu Regi" id="mat_registration" parent="mat.menu_root"
+                  action="registration_list_action"/>
+
+        <!--    action for sessions form -->
+        <record model="ir.actions.act_window" id="session_list_action">
+            <field name="name">Course Sesions</field>
+            <field name="res_model">mat.sessions</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!--    menu item for course sessions-->
+        <menuitem name="SESSIONS" id="sessions_menu" parent="mat.menu_root"
+                  action="session_list_action"/>
+
+
+
+        <!-- explicite search view-->
+
+        <record model="ir.ui.view" id="mat.search_view">
+            <field name="name">mat search</field>
+            <field name="model">mat.course</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+
+                </search>
+            </field>
+        </record>
+
+
+
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="mat.action_window">
+            <field name="name">Min Couses Academy</field>
+            <field name="res_model">mat.course</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Top menu item -->
+
+
+        <!-- menu categories -->
+
+        <menuitem name="COURSES DISPLAY " id="mat.display" parent="mat.menu_root"/>
+        <menuitem name="COURSES SHOW" id="mat.show" parent="mat.menu_root"/>
+
+        <!-- actions -->
+
+
+
+
+
+
+    </data>
+</odoo>
